@@ -1,1919 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mmesoma Juliet Umejionu — Data Analyst & AI Automation Specialist</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<style>
-/* ── TOKENS ──────────────────────────────────────────────── */
-:root {
-  --navy:    #0F1F3D;
-  --navy2:   #162843;
-  --navy3:   #1E3A5F;
-  --cobalt:  #2563EB;
-  --cobalt2: #1D4ED8;
-  --gold:    #C9A84C;
-  --gold2:   #B8962E;
-  --cream:   #F7F5F0;
-  --cream2:  #EEEBE4;
-  --white:   #FFFFFF;
-  --text:    #1A1A2E;
-  --muted:   #6B7280;
-  --light:   #9CA3AF;
-  --border:  #E5E2DB;
-  --card-bg: #FFFFFF;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mmesoma Juliet Umejionu — Data Analyst and AI Automation Specialist portfolio."
+    />
+    <title>Mmesoma Juliet Umejionu | Data Analyst & AI Automation Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav container">
+        <a class="brand" href="#top">
+          <span class="brand-mark">MJ</span>
+          <span>Mmesoma Juliet</span>
+        </a>
 
-  --sans: 'DM Sans', sans-serif;
-  --display: 'DM Serif Display', serif;
-  --mono: 'JetBrains Mono', monospace;
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-  --r-sm: 6px;
-  --r-md: 12px;
-  --r-lg: 20px;
-
-  --shadow-sm: 0 1px 3px rgba(15,31,61,.07), 0 1px 2px rgba(15,31,61,.04);
-  --shadow-md: 0 4px 16px rgba(15,31,61,.10), 0 2px 6px rgba(15,31,61,.06);
-  --shadow-lg: 0 12px 40px rgba(15,31,61,.14), 0 4px 12px rgba(15,31,61,.08);
-}
-
-/* ── RESET ───────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  font-family: var(--sans);
-  background: var(--cream);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-button { font-family: var(--sans); cursor: pointer; border: none; background: none; }
-
-/* ── NAV ─────────────────────────────────────────────────── */
-#nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5vw;
-  height: 64px;
-  background: rgba(15,31,61,0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  transition: box-shadow .3s;
-}
-#nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.3); }
-.nav-logo {
-  font-family: var(--display);
-  font-size: 1.1rem;
-  color: var(--white);
-  letter-spacing: .01em;
-}
-.nav-logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
-.nav-links a {
-  font-size: .85rem;
-  font-weight: 500;
-  color: rgba(255,255,255,.7);
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  transition: color .2s;
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-cta {
-  background: var(--cobalt);
-  color: var(--white) !important;
-  padding: .45rem 1.1rem;
-  border-radius: var(--r-sm);
-  font-weight: 600 !important;
-  transition: background .2s !important;
-}
-.nav-cta:hover { background: var(--cobalt2) !important; color: var(--white) !important; }
-
-/* hamburger */
-.nav-burger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
-.nav-burger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
-.mobile-menu {
-  display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-  background: var(--navy); padding: 1.5rem 5vw 2rem;
-  flex-direction: column; gap: 1.2rem;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-.mobile-menu a {
-  font-size: 1rem; font-weight: 500; color: rgba(255,255,255,.8);
-  text-transform: uppercase; letter-spacing: .05em;
-}
-.mobile-menu.open { display: flex; }
-
-/* ── HERO ─────────────────────────────────────────────────── */
-#hero {
-  min-height: 100vh;
-  background: var(--navy);
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 100px 5vw 60px;
-  position: relative; overflow: hidden;
-}
-
-/* grid lines background */
-#hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(37,99,235,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,99,235,.06) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
-
-/* glowing orb */
-.hero-orb {
-  position: absolute;
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(37,99,235,.18) 0%, transparent 70%);
-  top: -100px; right: -100px;
-  pointer-events: none;
-  animation: pulse-orb 6s ease-in-out infinite;
-}
-.hero-orb2 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(201,168,76,.10) 0%, transparent 70%);
-  bottom: -80px; left: 10%;
-  animation: pulse-orb 8s ease-in-out infinite reverse;
-}
-@keyframes pulse-orb {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50%       { transform: scale(1.12); opacity: .7; }
-}
-
-.hero-inner {
-  position: relative; z-index: 2;
-  max-width: 900px;
-}
-
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--mono);
-  font-size: .75rem;
-  color: var(--gold);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-}
-.hero-eyebrow::before {
-  content: '';
-  display: block; width: 28px; height: 1px;
-  background: var(--gold);
-}
-
-.hero-name {
-  font-family: var(--display);
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  color: var(--white);
-  line-height: 1.05;
-  letter-spacing: -.01em;
-  margin-bottom: .6rem;
-}
-.hero-name em {
-  font-style: italic;
-  color: var(--gold);
-}
-
-.hero-title {
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
-  color: rgba(255,255,255,.6);
-  font-weight: 300;
-  margin-bottom: 2.5rem;
-  max-width: 560px;
-}
-
-/* ── TICKER ── signature element ─────────────────────────── */
-.ticker-wrap {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: var(--r-sm);
-  padding: .6rem 1rem;
-  margin-bottom: 2.5rem;
-  overflow: hidden;
-  max-width: 600px;
-  position: relative;
-}
-.ticker-label {
-  font-family: var(--mono);
-  font-size: .65rem;
-  color: var(--gold);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin-bottom: .3rem;
-}
-.ticker-row {
-  display: flex; gap: 0;
-  white-space: nowrap;
-  animation: ticker-scroll 28s linear infinite;
-}
-.ticker-item {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--mono);
-  font-size: .8rem;
-  color: rgba(255,255,255,.85);
-  padding-right: 3rem;
-}
-.ticker-item .val { color: var(--cobalt); font-weight: 500; }
-.ticker-item .dot { color: rgba(255,255,255,.2); }
-@keyframes ticker-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--cobalt);
-  color: var(--white);
-  padding: .75rem 1.75rem;
-  border-radius: var(--r-sm);
-  font-weight: 600;
-  font-size: .95rem;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  box-shadow: 0 4px 14px rgba(37,99,235,.35);
-}
-.btn-primary:hover {
-  background: var(--cobalt2);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(37,99,235,.45);
-}
-.btn-outline {
-  border: 1.5px solid rgba(255,255,255,.25);
-  color: rgba(255,255,255,.85);
-  padding: .75rem 1.75rem;
-  border-radius: var(--r-sm);
-  font-weight: 500;
-  font-size: .95rem;
-  transition: border-color .2s, color .2s;
-}
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-/* scroll indicator */
-.scroll-hint {
-  position: absolute; bottom: 2rem; left: 5vw;
-  display: flex; align-items: center; gap: .5rem;
-  font-family: var(--mono); font-size: .65rem;
-  color: rgba(255,255,255,.3); letter-spacing: .08em;
-}
-.scroll-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--cobalt);
-  animation: blink 1.6s ease-in-out infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
-
-/* ── SECTIONS ─────────────────────────────────────────────── */
-section { padding: 80px 5vw; }
-section:nth-child(even) { background: var(--cream); }
-section:nth-child(odd)  { background: var(--white); }
-
-.section-eyebrow {
-  font-family: var(--mono);
-  font-size: .72rem;
-  color: var(--cobalt);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  margin-bottom: .6rem;
-}
-.section-title {
-  font-family: var(--display);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  color: var(--navy);
-  line-height: 1.15;
-  margin-bottom: 1rem;
-}
-.section-intro {
-  font-size: 1.05rem;
-  color: var(--muted);
-  max-width: 620px;
-  line-height: 1.7;
-  margin-bottom: 3rem;
-}
-.max-w { max-width: 1100px; margin: 0 auto; }
-
-/* ── ABOUT ───────────────────────────────────────────────── */
-#about { background: var(--cream) !important; }
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.about-text p {
-  font-size: 1.05rem;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 1.2rem;
-}
-.about-text p:last-child { margin-bottom: 0; }
-.about-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-.stat-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow .2s, transform .2s;
-}
-.stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.stat-val {
-  font-family: var(--display);
-  font-size: 2.4rem;
-  color: var(--navy);
-  line-height: 1;
-  margin-bottom: .3rem;
-}
-.stat-val span { color: var(--cobalt); }
-.stat-lbl {
-  font-size: .82rem;
-  color: var(--muted);
-  font-weight: 500;
-  letter-spacing: .02em;
-}
-
-/* ── SKILLS ──────────────────────────────────────────────── */
-#skills { background: var(--navy) !important; }
-#skills .section-eyebrow { color: var(--gold); }
-#skills .section-title { color: var(--white); }
-#skills .section-intro { color: rgba(255,255,255,.5); }
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.skill-card {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: var(--r-md);
-  padding: 1.6rem;
-  transition: background .2s, border-color .2s, transform .2s;
-}
-.skill-card:hover {
-  background: rgba(255,255,255,.08);
-  border-color: rgba(37,99,235,.4);
-  transform: translateY(-3px);
-}
-.skill-icon {
-  width: 40px; height: 40px;
-  border-radius: 8px;
-  background: rgba(37,99,235,.15);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-}
-.skill-card h3 {
-  font-size: .95rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: .7rem;
-}
-.skill-tags {
-  display: flex; flex-wrap: wrap; gap: .4rem;
-}
-.skill-tag {
-  font-family: var(--mono);
-  font-size: .68rem;
-  background: rgba(37,99,235,.15);
-  color: rgba(255,255,255,.7);
-  padding: .25rem .55rem;
-  border-radius: 4px;
-  border: 1px solid rgba(37,99,235,.2);
-}
-
-/* ── EXPERIENCE ──────────────────────────────────────────── */
-#experience { background: var(--white) !important; }
-.timeline { display: flex; flex-direction: column; gap: 0; }
-.timeline-item {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 2.5rem;
-  position: relative;
-  padding-bottom: 3rem;
-}
-.timeline-item:last-child { padding-bottom: 0; }
-
-/* vertical line */
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: 199px; top: 8px; bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--cobalt), transparent);
-}
-.timeline-item:last-child::before { display: none; }
-
-.t-left { text-align: right; padding-top: 4px; }
-.t-date {
-  font-family: var(--mono);
-  font-size: .75rem;
-  color: var(--cobalt);
-  font-weight: 500;
-  letter-spacing: .04em;
-  margin-bottom: .3rem;
-}
-.t-org {
-  font-size: .82rem;
-  color: var(--muted);
-  font-weight: 500;
-}
-.t-sector {
-  font-size: .75rem;
-  color: var(--light);
-  margin-top: .2rem;
-  font-style: italic;
-}
-
-.t-right { padding-left: 2rem; position: relative; }
-
-/* dot on line */
-.t-right::before {
-  content: '';
-  position: absolute;
-  left: -5px; top: 8px;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--cobalt);
-  border: 2px solid var(--white);
-  box-shadow: 0 0 0 3px rgba(37,99,235,.2);
-}
-
-.t-role {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: .6rem;
-}
-.t-bullets { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-.t-bullets li {
-  font-size: .92rem;
-  color: var(--muted);
-  line-height: 1.6;
-  padding-left: 1.1rem;
-  position: relative;
-}
-.t-bullets li::before {
-  content: '▸';
-  position: absolute; left: 0;
-  color: var(--cobalt);
-  font-size: .7rem;
-  top: 3px;
-}
-
-/* ── PROJECTS ─────────────────────────────────────────────── */
-#projects { background: var(--cream) !important; }
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-.project-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow .25s, transform .25s;
-  display: flex; flex-direction: column;
-  position: relative; overflow: hidden;
-}
-.project-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--cobalt), var(--gold));
-  opacity: 0;
-  transition: opacity .25s;
-}
-.project-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-}
-.project-card:hover::before { opacity: 1; }
-
-.project-num {
-  font-family: var(--mono);
-  font-size: .7rem;
-  color: var(--cobalt);
-  letter-spacing: .1em;
-  margin-bottom: 1rem;
-}
-.project-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: .8rem;
-  line-height: 1.3;
-}
-.project-desc {
-  font-size: .9rem;
-  color: var(--muted);
-  line-height: 1.7;
-  flex: 1;
-  margin-bottom: 1.2rem;
-}
-.project-tools {
-  display: flex; flex-wrap: wrap; gap: .4rem;
-}
-.project-tool {
-  font-family: var(--mono);
-  font-size: .68rem;
-  color: var(--navy);
-  background: var(--cream2);
-  padding: .25rem .6rem;
-  border-radius: 4px;
-  font-weight: 500;
-}
-.project-outcome {
-  margin-top: 1rem;
-  padding: .8rem 1rem;
-  background: rgba(37,99,235,.05);
-  border-left: 3px solid var(--cobalt);
-  border-radius: 0 var(--r-sm) var(--r-sm) 0;
-  font-size: .82rem;
-  color: var(--navy3);
-  line-height: 1.5;
-}
-.project-outcome strong { color: var(--cobalt); }
-
-/* ── PORTFOLIO SECTION ───────────────────────────────────── */
-#portfolio { background: var(--navy) !important; }
-#portfolio .section-eyebrow { color: var(--gold); }
-#portfolio .section-title { color: var(--white); }
-#portfolio .section-intro { color: rgba(255,255,255,.5); }
-
-.portfolio-notice {
-  background: rgba(201,168,76,.08);
-  border: 1px solid rgba(201,168,76,.2);
-  border-radius: var(--r-md);
-  padding: 1.4rem 1.8rem;
-  display: flex; align-items: flex-start; gap: 1rem;
-  margin-bottom: 2.5rem;
-}
-.portfolio-notice-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: .1rem; }
-.portfolio-notice p {
-  font-size: .9rem;
-  color: rgba(255,255,255,.65);
-  line-height: 1.6;
-}
-.portfolio-notice a {
-  color: var(--gold);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-}
-.portfolio-card {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: var(--r-md);
-  padding: 1.4rem;
-  transition: background .2s, border-color .2s;
-  cursor: pointer;
-}
-.portfolio-card:hover {
-  background: rgba(255,255,255,.09);
-  border-color: rgba(201,168,76,.3);
-}
-.portfolio-card-type {
-  font-family: var(--mono);
-  font-size: .63rem;
-  color: var(--gold);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin-bottom: .6rem;
-}
-.portfolio-card-title {
-  font-size: .95rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: .5rem;
-  line-height: 1.35;
-}
-.portfolio-card-desc {
-  font-size: .82rem;
-  color: rgba(255,255,255,.5);
-  line-height: 1.55;
-  margin-bottom: .8rem;
-}
-.portfolio-card-link {
-  font-family: var(--mono);
-  font-size: .72rem;
-  color: var(--cobalt);
-  display: inline-flex; align-items: center; gap: .3rem;
-}
-.portfolio-card-link::after { content: '→'; }
-
-/* ── EDUCATION & CERTS ───────────────────────────────────── */
-#education { background: var(--white) !important; }
-.edu-cert-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
-.edu-block h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 1.5rem;
-  padding-bottom: .6rem;
-  border-bottom: 2px solid var(--border);
-}
-.edu-entry {
-  display: flex; flex-direction: column;
-  gap: .3rem;
-  margin-bottom: 1.5rem;
-}
-.edu-degree {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--navy);
-}
-.edu-school {
-  font-size: .88rem;
-  color: var(--cobalt);
-  font-weight: 500;
-}
-.edu-years {
-  font-family: var(--mono);
-  font-size: .75rem;
-  color: var(--light);
-}
-.edu-notes {
-  font-size: .84rem;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-top: .2rem;
-}
-
-.cert-item {
-  display: flex; align-items: flex-start; gap: .9rem;
-  padding: .9rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.cert-item:last-child { border-bottom: none; }
-.cert-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--cobalt);
-  flex-shrink: 0; margin-top: 6px;
-}
-.cert-dot.gold { background: var(--gold); }
-.cert-dot.pending { background: var(--light); }
-.cert-name { font-size: .92rem; font-weight: 600; color: var(--navy); }
-.cert-issuer { font-size: .8rem; color: var(--muted); margin-top: .1rem; }
-.cert-badge {
-  margin-left: auto; flex-shrink: 0;
-  font-family: var(--mono);
-  font-size: .62rem;
-  padding: .2rem .5rem;
-  border-radius: 3px;
-  font-weight: 500;
-}
-.cert-badge.done {
-  background: rgba(37,99,235,.1);
-  color: var(--cobalt);
-}
-.cert-badge.wip {
-  background: rgba(201,168,76,.1);
-  color: var(--gold2);
-}
-
-/* ── CONTACT ──────────────────────────────────────────────── */
-#contact { background: var(--navy) !important; }
-#contact .section-title { color: var(--white); }
-#contact .section-intro { color: rgba(255,255,255,.5); }
-#contact .section-eyebrow { color: var(--gold); }
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-.contact-items { display: flex; flex-direction: column; gap: 1rem; }
-.contact-item {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: var(--r-md);
-  padding: 1.2rem 1.4rem;
-  display: flex; align-items: center; gap: 1rem;
-  transition: background .2s;
-}
-.contact-item:hover { background: rgba(255,255,255,.09); }
-.contact-item-icon {
-  width: 40px; height: 40px;
-  border-radius: 8px;
-  background: rgba(37,99,235,.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; flex-shrink: 0;
-}
-.contact-item-label {
-  font-size: .72rem; font-weight: 600;
-  color: rgba(255,255,255,.4);
-  letter-spacing: .06em; text-transform: uppercase;
-  margin-bottom: .15rem;
-}
-.contact-item-val {
-  font-size: .92rem;
-  color: rgba(255,255,255,.85);
-  font-weight: 500;
-}
-
-.copy-btn {
-  margin-left: auto; flex-shrink: 0;
-  font-family: var(--mono);
-  font-size: .65rem;
-  color: rgba(255,255,255,.35);
-  border: 1px solid rgba(255,255,255,.12);
-  padding: .25rem .6rem;
-  border-radius: 4px;
-  transition: color .2s, border-color .2s;
-}
-.copy-btn:hover { color: var(--gold); border-color: var(--gold); }
-.copy-btn.copied { color: #4ADE80; border-color: #4ADE80; }
-
-.contact-form-area {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: var(--r-lg);
-  padding: 2rem;
-}
-.contact-form-area h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 1.4rem;
-}
-.form-group { margin-bottom: 1rem; }
-.form-group label {
-  display: block;
-  font-size: .78rem;
-  font-weight: 600;
-  color: rgba(255,255,255,.5);
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  margin-bottom: .4rem;
-}
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: var(--r-sm);
-  padding: .75rem 1rem;
-  font-family: var(--sans);
-  font-size: .92rem;
-  color: var(--white);
-  transition: border-color .2s, background .2s;
-  outline: none;
-  resize: vertical;
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: rgba(255,255,255,.25); }
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--cobalt);
-  background: rgba(255,255,255,.09);
-}
-.form-submit {
-  width: 100%;
-  background: var(--cobalt);
-  color: var(--white);
-  padding: .85rem;
-  border-radius: var(--r-sm);
-  font-size: .95rem;
-  font-weight: 600;
-  transition: background .2s, transform .15s;
-  margin-top: .5rem;
-}
-.form-submit:hover { background: var(--cobalt2); transform: translateY(-1px); }
-
-/* ── FOOTER ───────────────────────────────────────────────── */
-footer {
-  background: #080F1E;
-  padding: 2rem 5vw;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 1rem;
-  border-top: 1px solid rgba(255,255,255,.06);
-}
-.footer-name {
-  font-family: var(--display);
-  font-size: 1rem;
-  color: rgba(255,255,255,.4);
-}
-.footer-name span { color: var(--gold); }
-.footer-note {
-  font-family: var(--mono);
-  font-size: .68rem;
-  color: rgba(255,255,255,.2);
-}
-
-/* ── SCROLL REVEAL ───────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── RESPONSIVE ───────────────────────────────────────────── */
-@media (max-width: 960px) {
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
-  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .contact-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 720px) {
-  .nav-links { display: none; }
-  .nav-burger { display: flex; }
-  .timeline-item {
-    grid-template-columns: 1fr;
-    padding-left: 1.5rem;
-    border-left: 1px solid rgba(37,99,235,.3);
-  }
-  .timeline-item::before { display: none; }
-  .t-right::before { left: -1.85rem; }
-  .t-left { text-align: left; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .portfolio-grid { grid-template-columns: 1fr; }
-  .edu-cert-grid { grid-template-columns: 1fr; }
-  .about-stats { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 480px) {
-  section { padding: 60px 5vw; }
-  .about-stats { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ticker-row { animation: none; }
-  .hero-orb { animation: none; }
-  .reveal { opacity: 1; transform: none; transition: none; }
-}
-
-/* ── VIDEO GALLERY ───────────────────────────────────────── */
-#portfolio { background: var(--navy) !important; }
-#portfolio .section-eyebrow { color: var(--gold); }
-#portfolio .section-title { color: var(--white); }
-#portfolio .section-intro { color: rgba(255,255,255,.5); }
-
-.vid-filter {
-  display: flex; flex-wrap: wrap; gap: .6rem;
-  margin-bottom: 2.5rem;
-}
-.vf-btn {
-  font-family: var(--mono);
-  font-size: .72rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: .45rem 1rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255,255,255,.15);
-  color: rgba(255,255,255,.5);
-  background: transparent;
-  cursor: pointer;
-  transition: all .2s;
-}
-.vf-btn:hover { border-color: var(--gold); color: var(--gold); }
-.vf-btn.active { background: var(--cobalt); border-color: var(--cobalt); color: var(--white); }
-
-.vid-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-.vid-card {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  transition: transform .25s, border-color .25s, box-shadow .25s;
-}
-.vid-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(37,99,235,.4);
-  box-shadow: 0 8px 32px rgba(0,0,0,.3);
-}
-.vid-card.hidden { display: none; }
-
-.vid-embed-wrap {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 */
-  background: #000;
-}
-.vid-embed-wrap iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.vid-meta {
-  padding: 1rem 1.1rem 1.1rem;
-}
-.vid-num {
-  font-family: var(--mono);
-  font-size: .62rem;
-  color: var(--gold);
-  letter-spacing: .1em;
-  margin-bottom: .3rem;
-}
-.vid-title {
-  font-size: .92rem;
-  font-weight: 600;
-  color: var(--white);
-  line-height: 1.35;
-  margin-bottom: .5rem;
-}
-.vid-edit-wrap {
-  display: flex; gap: .4rem;
-  margin-bottom: .4rem;
-}
-.vid-input {
-  flex: 1;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 4px;
-  padding: .35rem .6rem;
-  font-family: var(--sans);
-  font-size: .82rem;
-  color: var(--white);
-  outline: none;
-}
-.vid-input:focus { border-color: var(--cobalt); }
-.vid-save {
-  background: var(--cobalt);
-  color: var(--white);
-  font-size: .78rem;
-  font-weight: 600;
-  padding: .35rem .7rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background .2s;
-}
-.vid-save:hover { background: var(--cobalt2); }
-.vid-edit-btn {
-  font-family: var(--mono);
-  font-size: .62rem;
-  color: rgba(255,255,255,.3);
-  cursor: pointer;
-  transition: color .2s;
-  padding: 0;
-}
-.vid-edit-btn:hover { color: var(--gold); }
-
-/* docs callout */
-.portfolio-docs {
-  margin-top: 1rem;
-}
-.portfolio-docs-inner {
-  background: rgba(201,168,76,.07);
-  border: 1px solid rgba(201,168,76,.18);
-  border-radius: var(--r-md);
-  padding: 1.2rem 1.6rem;
-  display: flex; align-items: center; gap: 1.2rem;
-  flex-wrap: wrap;
-}
-.portfolio-docs-icon { font-size: 1.4rem; flex-shrink: 0; }
-.portfolio-docs-title {
-  font-size: .92rem; font-weight: 600;
-  color: rgba(255,255,255,.8);  margin-bottom: .2rem;
-}
-.portfolio-docs-sub {
-  font-size: .82rem;
-  color: rgba(255,255,255,.4);
-  line-height: 1.5;
-}
-.portfolio-docs-link {
-  margin-left: auto;
-  font-family: var(--mono);
-  font-size: .75rem;
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,.3);
-  padding: .5rem 1rem;
-  border-radius: 4px;
-  white-space: nowrap;
-  transition: background .2s;
-  flex-shrink: 0;
-}
-.portfolio-docs-link:hover { background: rgba(201,168,76,.1); }
-
-@media (max-width: 960px) {
-  .vid-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 580px) {
-  .vid-grid { grid-template-columns: 1fr; }
-}
-
-</style>
-</head>
-<body>
-
-<!-- ── NAV ──────────────────────────────────────────────────── -->
-<nav id="nav">
-  <div class="nav-logo">MJU <span>·</span> Portfolio</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact" class="nav-cta">Get in Touch</a>
-  </div>
-  <button class="nav-burger" id="burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#skills" onclick="closeMobile()">Skills</a>
-  <a href="#experience" onclick="closeMobile()">Experience</a>
-  <a href="#projects" onclick="closeMobile()">Projects</a>
-  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-  <a href="#contact" onclick="closeMobile()">Get in Touch</a>
-</div>
-
-<!-- ── HERO ──────────────────────────────────────────────────── -->
-<section id="hero">
-  <div class="hero-orb"></div>
-  <div class="hero-orb hero-orb2"></div>
-
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Data Analyst &amp; AI Automation Specialist</div>
-
-    <h1 class="hero-name">
-      Mmesoma<br><em>Juliet Umejionu</em>
-    </h1>
-
-    <p class="hero-title">
-      Turning complex datasets into clear decisions. Building automation systems that eliminate manual overhead. Bridging analytics, operations, and AI.
-    </p>
-
-    <!-- TICKER — signature element -->
-    <div class="ticker-wrap">
-      <div class="ticker-label">Live metrics</div>
-      <div class="ticker-row" id="tickerRow"></div>
-    </div>
-
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-outline">Work With Me</a>
-    </div>
-  </div>
-
-  <div class="scroll-hint">
-    <div class="scroll-dot"></div>
-    Scroll to explore
-  </div>
-</section>
-
-<!-- ── ABOUT ──────────────────────────────────────────────────── -->
-<section id="about">
-  <div class="max-w">
-    <div class="section-eyebrow reveal">Who I Am</div>
-    <h2 class="section-title reveal">Statistics + Automation<br>+ A Drive for Results</h2>
-
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p>I am a Statistics graduate and multidisciplinary professional with hands-on experience across data analytics, AI automation, and operations management. I do not just build dashboards — I design end-to-end systems that turn raw operational data into repeatable business decisions.</p>
-        <p>At Naijatutors Konnect, I redesigned support workflows and cut resolution times by 50%. Through independent projects, I have delivered over 15 analytics engagements spanning data cleaning, business intelligence, dashboard development, and workflow automation using tools like Power BI, SQL, Excel, and n8n.</p>
-        <p>I am currently deepening my expertise in AI annotation and automation to sit at the intersection of data infrastructure and intelligent system development. My goal is to help organisations stop guessing and start deciding with confidence.</p>
-      </div>
-      <div class="about-stats reveal">
-        <div class="stat-card">
-          <div class="stat-val">15<span>+</span></div>
-          <div class="stat-lbl">Analytics projects delivered</div>
+        <div class="nav-menu">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#media">Media</a>
+          <a href="#contact">Contact</a>
+          <a class="nav-button" href="#contact">Book a Call</a>
         </div>
-        <div class="stat-card">
-          <div class="stat-val">50<span>%</span></div>
-          <div class="stat-lbl">Reduction in resolution time</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val">3</div>
-          <div class="stat-lbl">Industry sectors covered</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val">4<span>+</span></div>
-          <div class="stat-lbl">Years of professional experience</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </nav>
+    </header>
 
-<!-- ── SKILLS ──────────────────────────────────────────────────── -->
-<section id="skills">
-  <div class="max-w">
-    <div class="section-eyebrow reveal">Capabilities</div>
-    <h2 class="section-title reveal">Core Skills</h2>
-    <p class="section-intro reveal">A cross-functional skill set built for modern data and operations roles.</p>
+    <main>
+      <section class="hero">
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
+        <div class="container hero-layout">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Data Analyst • AI Automation Specialist</p>
+            <h1>
+              Turning business data into<br />
+              <span>clear decisions and smarter systems.</span>
+            </h1>
+            <p class="lead">
+              I help organizations simplify operations, uncover opportunities in data,
+              and automate repetitive work with practical AI and analytics solutions.
+            </p>
 
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="skill-icon">📊</div>
-        <h3>Data Analytics</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">Excel (Advanced)</span>
-          <span class="skill-tag">Google Sheets</span>
-          <span class="skill-tag">KPI Reporting</span>
-          <span class="skill-tag">Statistical Analysis</span>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="skill-icon">📈</div>
-        <h3>Business Intelligence</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Power BI</span>
-          <span class="skill-tag">Dashboard Design</span>
-          <span class="skill-tag">Data Visualisation</span>
-          <span class="skill-tag">BI Reporting</span>
-          <span class="skill-tag">Trend Analysis</span>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="skill-icon">⚙️</div>
-        <h3>AI & Automation</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">n8n</span>
-          <span class="skill-tag">Workflow Design</span>
-          <span class="skill-tag">AI Annotation</span>
-          <span class="skill-tag">QA Review</span>
-          <span class="skill-tag">Process Automation</span>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="skill-icon">🔧</div>
-        <h3>Operations</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Process Improvement</span>
-          <span class="skill-tag">SOP Development</span>
-          <span class="skill-tag">Performance Monitoring</span>
-          <span class="skill-tag">Documentation</span>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="skill-icon">🤝</div>
-        <h3>Client Support</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">CRM</span>
-          <span class="skill-tag">Client Onboarding</span>
-          <span class="skill-tag">Complaint Resolution</span>
-          <span class="skill-tag">Stakeholder Mgmt</span>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="skill-icon">🧹</div>
-        <h3>Data Engineering</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Data Cleaning</span>
-          <span class="skill-tag">ETL Pipelines</span>
-          <span class="skill-tag">Report Automation</span>
-          <span class="skill-tag">Training Data Prep</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── EXPERIENCE ──────────────────────────────────────────────── -->
-<section id="experience">
-  <div class="max-w">
-    <div class="section-eyebrow reveal">Career History</div>
-    <h2 class="section-title reveal">Professional Experience</h2>
-    <p class="section-intro reveal">A record of measurable impact across analytics, operations, and AI.</p>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="t-left reveal">
-          <div class="t-date">2023 — Present</div>
-          <div class="t-org">Naijatutors Konnect</div>
-          <div class="t-sector">EdTech, Nigeria</div>
-        </div>
-        <div class="t-right reveal">
-          <div class="t-role">Client Support & Data Analyst</div>
-          <ul class="t-bullets">
-            <li>Reduced customer response and issue-resolution time by <strong>50%</strong> by redesigning the support triage workflow and establishing priority-based escalation protocols.</li>
-            <li>Built and maintained Power BI KPI dashboards used for weekly management reporting and resource allocation decisions.</li>
-            <li>Automated recurring operational reports using n8n, eliminating an estimated <strong>5+ hours</strong> of manual work per week.</li>
-            <li>Analysed customer interaction datasets to surface pain points that directly influenced product and support strategy.</li>
-            <li>Managed client onboarding and relationship workflows, improving first-week retention through structured follow-up processes.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="t-left reveal">
-          <div class="t-date">2022 — 2023</div>
-          <div class="t-org">PUCO & Partners Group</div>
-          <div class="t-sector">Food · Real Estate · Auto</div>
-        </div>
-        <div class="t-right reveal">
-          <div class="t-role">Operations Coordinator</div>
-          <ul class="t-bullets">
-            <li>Supported operational planning and performance monitoring across three business divisions with bi-weekly KPI reporting to senior management.</li>
-            <li>Identified and documented process gaps in customer engagement workflows, contributing to a revised engagement protocol.</li>
-            <li>Designed standardised weekly reporting templates adopted across all three divisions.</li>
-            <li>Coordinated cross-functional activities and maintained operational documentation across Food, Real Estate, and Automobile divisions.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="t-left reveal">
-          <div class="t-date">2023</div>
-          <div class="t-org">Lighthouse</div>
-          <div class="t-sector">AI / Remote</div>
-        </div>
-        <div class="t-right reveal">
-          <div class="t-role">AI Annotation Specialist</div>
-          <ul class="t-bullets">
-            <li>Annotated structured and unstructured datasets for AI model training across multiple task types.</li>
-            <li>Conducted quality assurance passes on annotated batches, identifying and correcting inconsistencies to improve training data reliability.</li>
-            <li>Collaborated with annotation team leads to align on labelling guidelines and maintain consistency across large dataset volumes.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="t-left reveal">
-          <div class="t-date">2022 — Present</div>
-          <div class="t-org">Independent</div>
-          <div class="t-sector">Freelance / Remote</div>
-        </div>
-        <div class="t-right reveal">
-          <div class="t-role">Data Analyst & AI Automation Specialist</div>
-          <ul class="t-bullets">
-            <li>Delivered <strong>15+</strong> end-to-end analytics engagements covering data cleaning, statistical analysis, dashboard development, and BI reporting across multiple industries.</li>
-            <li>Designed and deployed AI automation workflows using n8n, streamlining repetitive operational processes for small businesses.</li>
-            <li>Produced client-facing reports and visualisations that translated complex datasets into decision-ready insights for non-technical stakeholders.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── PROJECTS ──────────────────────────────────────────────────── -->
-<section id="projects">
-  <div class="max-w">
-    <div class="section-eyebrow reveal">Work Samples</div>
-    <h2 class="section-title reveal">Featured Projects</h2>
-    <p class="section-intro reveal">Selected analytics and automation projects with real outcomes.</p>
-
-    <div class="projects-grid">
-
-      <div class="project-card reveal">
-        <div class="project-num">PROJECT 01</div>
-        <div class="project-title">Customer Insights & Performance Analysis</div>
-        <p class="project-desc">Analysed a customer dataset to identify behavioural segments and performance trends. The objective was to surface churn risk signals and high-value customer cohorts that could inform retention strategy.</p>
-        <div class="project-tools">
-          <span class="project-tool">SQL</span>
-          <span class="project-tool">Power BI</span>
-          <span class="project-tool">Excel</span>
-          <span class="project-tool">Segmentation</span>
-        </div>
-        <div class="project-outcome">
-          <strong>Outcome:</strong> Delivered a live Power BI dashboard surfacing churn risk indicators and top-performing cohorts, enabling targeted retention strategy by management.
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-num">PROJECT 02</div>
-        <div class="project-title">Customer Support Performance Analysis</div>
-        <p class="project-desc">Built an end-to-end support analytics pipeline from raw ticket data through to an interactive management dashboard. Focused on resolution speed, satisfaction scores, and agent performance patterns.</p>
-        <div class="project-tools">
-          <span class="project-tool">Excel</span>
-          <span class="project-tool">Power BI</span>
-          <span class="project-tool">Data Cleaning</span>
-          <span class="project-tool">KPI Design</span>
-        </div>
-        <div class="project-outcome">
-          <strong>Outcome:</strong> Dashboard used to guide support team training priorities, reducing recurring complaint categories by identifying root causes.
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-num">PROJECT 03</div>
-        <div class="project-title">Operational Performance Dashboard</div>
-        <p class="project-desc">Designed a multi-KPI operational dashboard consolidating data from multiple business sources. Automated the refresh cycle to replace a time-consuming manual weekly reporting process.</p>
-        <div class="project-tools">
-          <span class="project-tool">Power BI</span>
-          <span class="project-tool">n8n</span>
-          <span class="project-tool">Google Sheets</span>
-          <span class="project-tool">Automation</span>
-        </div>
-        <div class="project-outcome">
-          <strong>Outcome:</strong> Weekly reporting preparation reduced from several hours to near-zero through automated refresh pipeline.
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-num">PROJECT 04</div>
-        <div class="project-title">Business Intelligence Reporting Suite</div>
-        <p class="project-desc">Developed a structured monthly BI reporting suite for a client tracking revenue, cost, and operational efficiency. Replaced ad hoc spreadsheet analysis with a systematic, repeatable reporting workflow.</p>
-        <div class="project-tools">
-          <span class="project-tool">SQL</span>
-          <span class="project-tool">Excel</span>
-          <span class="project-tool">Power BI</span>
-          <span class="project-tool">BI Reporting</span>
-        </div>
-        <div class="project-outcome">
-          <strong>Outcome:</strong> Monthly reporting cycle standardised, improving decision-making speed and reducing time spent on data preparation by management.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── PORTFOLIO ──────────────────────────────────────────────────── -->
-<section id="portfolio">
-  <div class="max-w">
-    <div class="section-eyebrow reveal">Full Portfolio</div>
-    <h2 class="section-title reveal">Project Walkthroughs</h2>
-    <p class="section-intro reveal">Video walkthroughs of 14 data analytics and automation projects — from dashboard builds to workflow automation. Click any video to watch.</p>
-
-    <div class="vid-filter reveal">
-      <button class="vf-btn active" onclick="filterVids('all', this)">All Videos</button>
-      <button class="vf-btn" onclick="filterVids('analytics', this)">Analytics</button>
-      <button class="vf-btn" onclick="filterVids('dashboard', this)">Dashboards</button>
-      <button class="vf-btn" onclick="filterVids('automation', this)">Automation</button>
-    </div>
-
-    <div class="vid-grid" id="vidGrid">
-        <div class="vid-card reveal" data-index="1">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/6cr7xY70Gbw?rel=0&modestbranding=1"
-              title="Project video 01"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 01</div>
-            <div class="vid-title" id="vt-1">Project Walkthrough 01</div>
-            <div class="vid-edit-wrap" id="ve-1" style="display:none">
-              <input class="vid-input" id="vi-1" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(1)">Save</button>
+            <div class="hero-actions">
+              <a class="button primary" href="#projects">View Work</a>
+              <a class="button secondary" href="#contact">Get in Touch</a>
             </div>
-            <button class="vid-edit-btn" onclick="editTitle(1)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="2">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/FGUepxM2JPc?rel=0&modestbranding=1"
-              title="Project video 02"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 02</div>
-            <div class="vid-title" id="vt-2">Project Walkthrough 02</div>
-            <div class="vid-edit-wrap" id="ve-2" style="display:none">
-              <input class="vid-input" id="vi-2" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(2)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(2)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="3">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/BPMeYmodfII?rel=0&modestbranding=1"
-              title="Project video 03"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 03</div>
-            <div class="vid-title" id="vt-3">Project Walkthrough 03</div>
-            <div class="vid-edit-wrap" id="ve-3" style="display:none">
-              <input class="vid-input" id="vi-3" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(3)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(3)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="4">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/Ae2dbQKA-n0?rel=0&modestbranding=1"
-              title="Project video 04"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 04</div>
-            <div class="vid-title" id="vt-4">Project Walkthrough 04</div>
-            <div class="vid-edit-wrap" id="ve-4" style="display:none">
-              <input class="vid-input" id="vi-4" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(4)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(4)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="5">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/Mnw5T2CoOK8?rel=0&modestbranding=1"
-              title="Project video 05"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 05</div>
-            <div class="vid-title" id="vt-5">Project Walkthrough 05</div>
-            <div class="vid-edit-wrap" id="ve-5" style="display:none">
-              <input class="vid-input" id="vi-5" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(5)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(5)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="6">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/0i11C_XlCMc?rel=0&modestbranding=1"
-              title="Project video 06"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 06</div>
-            <div class="vid-title" id="vt-6">Project Walkthrough 06</div>
-            <div class="vid-edit-wrap" id="ve-6" style="display:none">
-              <input class="vid-input" id="vi-6" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(6)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(6)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="7">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/aZPALVSfRQc?rel=0&modestbranding=1"
-              title="Project video 07"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 07</div>
-            <div class="vid-title" id="vt-7">Project Walkthrough 07</div>
-            <div class="vid-edit-wrap" id="ve-7" style="display:none">
-              <input class="vid-input" id="vi-7" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(7)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(7)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="8">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/4d7VwF-kYRM?rel=0&modestbranding=1"
-              title="Project video 08"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 08</div>
-            <div class="vid-title" id="vt-8">Project Walkthrough 08</div>
-            <div class="vid-edit-wrap" id="ve-8" style="display:none">
-              <input class="vid-input" id="vi-8" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(8)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(8)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="9">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/oYPmA08tTwI?rel=0&modestbranding=1"
-              title="Project video 09"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 09</div>
-            <div class="vid-title" id="vt-9">Project Walkthrough 09</div>
-            <div class="vid-edit-wrap" id="ve-9" style="display:none">
-              <input class="vid-input" id="vi-9" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(9)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(9)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="10">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/6BRyiOO3ajM?rel=0&modestbranding=1"
-              title="Project video 10"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 10</div>
-            <div class="vid-title" id="vt-10">Project Walkthrough 10</div>
-            <div class="vid-edit-wrap" id="ve-10" style="display:none">
-              <input class="vid-input" id="vi-10" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(10)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(10)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="11">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/_QHAimIUeEw?rel=0&modestbranding=1"
-              title="Project video 11"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 11</div>
-            <div class="vid-title" id="vt-11">Project Walkthrough 11</div>
-            <div class="vid-edit-wrap" id="ve-11" style="display:none">
-              <input class="vid-input" id="vi-11" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(11)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(11)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="12">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/yXS4RyGsw_E?rel=0&modestbranding=1"
-              title="Project video 12"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 12</div>
-            <div class="vid-title" id="vt-12">Project Walkthrough 12</div>
-            <div class="vid-edit-wrap" id="ve-12" style="display:none">
-              <input class="vid-input" id="vi-12" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(12)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(12)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="13">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/TXB3xIbZ6Rk?rel=0&modestbranding=1"
-              title="Project video 13"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 13</div>
-            <div class="vid-title" id="vt-13">Project Walkthrough 13</div>
-            <div class="vid-edit-wrap" id="ve-13" style="display:none">
-              <input class="vid-input" id="vi-13" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(13)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(13)">✏ Edit title</button>
-          </div>
-        </div>
-        <div class="vid-card reveal" data-index="14">
-          <div class="vid-embed-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/CEQBIbH-llE?rel=0&modestbranding=1"
-              title="Project video 14"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
-          <div class="vid-meta">
-            <div class="vid-num">VIDEO 14</div>
-            <div class="vid-title" id="vt-14">Project Walkthrough 14</div>
-            <div class="vid-edit-wrap" id="ve-14" style="display:none">
-              <input class="vid-input" id="vi-14" type="text" placeholder="Enter video title…"/>
-              <button class="vid-save" onclick="saveTitle(14)">Save</button>
-            </div>
-            <button class="vid-edit-btn" onclick="editTitle(14)">✏ Edit title</button>
-          </div>
-        </div>
-    </div>
 
-    <div class="portfolio-docs reveal">
-      <div class="portfolio-docs-inner">
-        <div class="portfolio-docs-icon">📄</div>
-        <div>
-          <div class="portfolio-docs-title">Full written documentation</div>
-          <div class="portfolio-docs-sub">Extended project write-ups, methodology notes, and dataset summaries are available in the portfolio document.</div>
+            <ul class="hero-metrics" aria-label="Key highlights">
+              <li><strong>5+</strong><span>Years of experience</span></li>
+              <li><strong>30+</strong><span>Projects delivered</span></li>
+              <li><strong>10k+</strong><span>Insights powered</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-panel reveal">
+            <div class="profile-card">
+              <div class="profile-photo-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80"
+                  alt="Portrait of Mmesoma Juliet Umejionu"
+                />
+              </div>
+              <div class="profile-details">
+                <span class="status">Available for consulting</span>
+                <h2>Mmesoma Juliet Umejionu</h2>
+                <p>Data Analyst & AI Automation Specialist</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <a href="https://1drv.ms/w/c/1bb00868e9c51a3b/IQDRFSmIdHjmRJdCF-ITOurVAQToLpGJwu0KgQ6DTqPVQwU?e=1cdU82" target="_blank" rel="noopener" class="portfolio-docs-link">Open Portfolio →</a>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow dark">About</p>
+            <h2>Focused on measurable impact.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-copy reveal">
+              <p>
+                I bring together analytics, process design, and workflow automation to
+                help teams work faster and make better decisions. My work blends data
+                storytelling with practical systems that remove friction from daily tasks.
+              </p>
+              <p>
+                From dashboard development to AI-driven workflows, I collaborate with
+                businesses to turn information into action and streamline operations with
+                technology that is both efficient and scalable.
+              </p>
+            </div>
+
+            <div class="info-card reveal">
+              <h3>Core expertise</h3>
+              <ul>
+                <li>Business analytics and reporting</li>
+                <li>Data cleaning and insight generation</li>
+                <li>Process automation and workflow design</li>
+                <li>AI-powered productivity systems</li>
+                <li>Dashboard and KPI monitoring</li>
+                <li>Stakeholder communication and documentation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section experience">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow dark">Experience</p>
+            <h2>Work built around data and efficiency.</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <div class="timeline-date">2023 — Present</div>
+              <div class="timeline-content">
+                <h3>Data Analyst & Automation Specialist</h3>
+                <p class="timeline-meta">Independent Client Work</p>
+                <ul>
+                  <li>Designed dashboards and operational reporting for decision support.</li>
+                  <li>Automated repetitive reporting and admin workflows using low-code and scripting tools.</li>
+                  <li>Partnered with stakeholder teams to define KPIs and improve process visibility.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal">
+              <div class="timeline-date">2021 — 2023</div>
+              <div class="timeline-content">
+                <h3>Operations Analyst</h3>
+                <p class="timeline-meta">Business Performance Team</p>
+                <ul>
+                  <li>Analyzed operational trends and translated findings into improvement actions.</li>
+                  <li>Reduced reporting delays by restructuring data sources and documentation flow.</li>
+                  <li>Created standardized metrics to monitor team performance and business health.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal">
+              <div class="timeline-date">2019 — 2021</div>
+              <div class="timeline-content">
+                <h3>Project Support & Reporting Analyst</h3>
+                <p class="timeline-meta">Project Operations</p>
+                <ul>
+                  <li>Coordinated project administrative workflows and progress tracking.</li>
+                  <li>Prepared executive summaries from operational data for leadership reviews.</li>
+                  <li>Supported process improvements that improved team turnaround times.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section projects">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow dark">Projects</p>
+            <h2>Selected work across analytics and automation.</h2>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card reveal">
+              <span class="project-tag">Dashboard</span>
+              <h3>Executive Performance Dashboard</h3>
+              <p>
+                Built an interactive KPI dashboard to summarize business performance,
+                highlighting trends, gaps, and opportunities for leadership decisions.
+              </p>
+              <ul>
+                <li>Improved reporting speed</li>
+                <li>Centralized key metrics</li>
+                <li>Made decision-making easier</li>
+              </ul>
+            </article>
+
+            <article class="project-card reveal">
+              <span class="project-tag">Automation</span>
+              <h3>Workflow Automation System</h3>
+              <p>
+                Automated repetitive reporting and data extraction tasks to reduce manual work
+                and improve consistency across operations.
+              </p>
+              <ul>
+                <li>Reduced manual effort</li>
+                <li>Improved data accuracy</li>
+                <li>Saved processing time</li>
+              </ul>
+            </article>
+
+            <article class="project-card reveal">
+              <span class="project-tag">Insights</span>
+              <h3>Operational Trend Analysis</h3>
+              <p>
+                Analyzed performance patterns and surfaced actionable insights that guided team
+                allocation, planning, and operational improvements.
+              </p>
+              <ul>
+                <li>Actionable trend reporting</li>
+                <li>Process optimization</li>
+                <li>Better forecasting support</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="media" class="section media">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow dark">Media</p>
+            <h2>Video showcases and walkthroughs.</h2>
+          </div>
+
+          <div class="filter-bar reveal" aria-label="Video filter controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="analytics">Analytics</button>
+            <button class="filter-btn" data-filter="automation">Automation</button>
+          </div>
+
+          <div class="video-grid">
+            <article class="video-card reveal" data-category="analytics">
+              <div class="video-frame">
+                <iframe
+                  src="https://www.youtube.com/embed/7eX0gaJ9QDo?si=Tc1J7Jg5Z3Yul6tK"
+                  title="Business dashboard walkthrough"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="video-info">
+                <h3>Data Storytelling and Dashboard Review</h3>
+                <p>Analytics • Business reporting</p>
+              </div>
+            </article>
+
+            <article class="video-card reveal" data-category="automation">
+              <div class="video-frame">
+                <iframe
+                  src="https://www.youtube.com/embed/aqz-KE-bpKQ?si=0T4K1Gh5Qk7H3A6s"
+                  title="AI workflow automation overview"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="video-info">
+                <h3>AI Workflow Automation Overview</h3>
+                <p>Automation • Process design</p>
+              </div>
+            </article>
+
+            <article class="video-card reveal" data-category="analytics">
+              <div class="video-frame">
+                <iframe
+                  src="https://www.youtube.com/embed/ScMzIvxBSi4?si=9h5o1wKQRF41X8e2"
+                  title="Insights and KPI review"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="video-info">
+                <h3>Key Metrics and Performance Insights</h3>
+                <p>Analytics • Operations</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow dark">Contact</p>
+            <h2>Let’s build something efficient.</h2>
+          </div>
+
+          <div class="contact-layout">
+            <div class="contact-card reveal">
+              <div class="contact-item">
+                <label>Email</label>
+                <a href="mailto:mmesoma@example.com">mmesoma@example.com</a>
+              </div>
+              <div class="contact-item">
+                <label>Location</label>
+                <span>Remote / Flexible</span>
+              </div>
+              <div class="contact-item">
+                <label>Focus</label>
+                <span>Analytics, AI automation, reporting</span>
+              </div>
+            </div>
+
+            <form class="contact-form reveal">
+              <div class="form-row">
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Your name" />
+              </div>
+              <div class="form-row">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Your email" />
+              </div>
+              <div class="form-row">
+                <label for="message">Project details</label>
+                <textarea id="message" rows="5" placeholder="Tell me about your project"></textarea>
+              </div>
+              <button type="submit" class="button primary submit-button">Send Inquiry</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Mmesoma Juliet Umejionu</p>
+        <p>Data Analyst • AI Automation Specialist</p>
       </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- ── EDUCATION & CERTS ──────────────────────────────────────────── -->
-<section id="education">
-  <div class="max-w">
-    <div class="section-eyebrow reveal">Background</div>
-    <h2 class="section-title reveal">Education & Certifications</h2>
-
-    <div class="edu-cert-grid">
-      <div class="edu-block reveal">
-        <h3>Education</h3>
-        <div class="edu-entry">
-          <div class="edu-degree">B.Sc. Statistics</div>
-          <div class="edu-school">Nnamdi Azikiwe University, Awka</div>
-          <div class="edu-years">2020 — 2024</div>
-          <div class="edu-notes">
-            Core coursework: Statistical Inference, Regression Analysis, Probability Theory, Data Management, Operations Research, Econometrics, Research Methodology. Final year focus on applied statistical modelling for real-world business and social datasets.
-          </div>
-        </div>
-      </div>
-      <div class="edu-block reveal">
-        <h3>Certifications</h3>
-        <div class="cert-item">
-          <div class="cert-dot"></div>
-          <div>
-            <div class="cert-name">Data Analysis Certification</div>
-            <div class="cert-issuer">Quantum Analytics · 2023</div>
-          </div>
-          <div class="cert-badge done">Completed</div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot gold"></div>
-          <div>
-            <div class="cert-name">AI Annotation Training</div>
-            <div class="cert-issuer">Lighthouse · 2023</div>
-          </div>
-          <div class="cert-badge done">Completed</div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot pending"></div>
-          <div>
-            <div class="cert-name">AI Automation Training</div>
-            <div class="cert-issuer">In Progress · 2024</div>
-          </div>
-          <div class="cert-badge wip">In Progress</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACT ──────────────────────────────────────────────────── -->
-<section id="contact">
-  <div class="max-w">
-    <div class="section-eyebrow reveal">Get in Touch</div>
-    <h2 class="section-title reveal">Let's Work Together</h2>
-    <p class="section-intro reveal">Available for freelance analytics projects, AI automation work, operations consulting, and remote full-time roles.</p>
-
-    <div class="contact-grid">
-      <div class="contact-items reveal">
-        <div class="contact-item">
-          <div class="contact-item-icon">✉️</div>
-          <div>
-            <div class="contact-item-label">Email</div>
-            <div class="contact-item-val">umejionummesoma@gmail.com</div>
-          </div>
-          <button class="copy-btn" onclick="copyEmail(this)">Copy</button>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div>
-            <div class="contact-item-label">Phone / WhatsApp</div>
-            <div class="contact-item-val">+234 916 562 1724</div>
-          </div>
-          <button class="copy-btn" onclick="copyPhone(this)">Copy</button>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div>
-            <div class="contact-item-label">Location</div>
-            <div class="contact-item-val">Nigeria · Open to Remote</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📄</div>
-          <div>
-            <div class="contact-item-label">Portfolio</div>
-            <div class="contact-item-val">Available on request</div>
-          </div>
-          <a href="https://1drv.ms/w/c/1bb00868e9c51a3b/IQDRFSmIdHjmRJdCF-ITOurVAQToLpGJwu0KgQ6DTqPVQwU?e=1cdU82" target="_blank" class="copy-btn" style="text-decoration:none">Open</a>
-        </div>
-      </div>
-
-      <div class="contact-form-area reveal">
-        <h3>Send a message</h3>
-        <div class="form-group">
-          <label>Your name</label>
-          <input type="text" placeholder="Jane Smith" id="fc-name"/>
-        </div>
-        <div class="form-group">
-          <label>Your email</label>
-          <input type="email" placeholder="jane@company.com" id="fc-email"/>
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea rows="4" placeholder="Tell me about the project or role..." id="fc-msg"></textarea>
-        </div>
-        <button class="form-submit" onclick="sendEmail()">Send Message</button>
-        <div id="fc-status" style="font-size:.82rem;color:#4ADE80;margin-top:.6rem;display:none;">Opening your email client…</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ──────────────────────────────────────────────────── -->
-<footer>
-  <div class="footer-name">Mmesoma <span>Juliet</span> Umejionu</div>
-  <div class="footer-note">Data Analyst · AI Automation · Operations · Nigeria</div>
-</footer>
-
-<!-- ── SCRIPTS ──────────────────────────────────────────────────── -->
-<script>
-// ── NAV scroll effect ────────────────────────────────────────
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
-
-// ── Mobile menu ──────────────────────────────────────────────
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobileMenu');
-burger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
-function closeMobile() { mobileMenu.classList.remove('open'); }
-
-// ── Ticker ───────────────────────────────────────────────────
-const tickerData = [
-  { label: 'Projects Delivered', val: '15+' },
-  { label: 'Resolution Time Reduced', val: '50%' },
-  { label: 'Reports Automated / wk', val: '5 hrs saved' },
-  { label: 'Industry Sectors', val: '3' },
-  { label: 'Tools Proficient', val: '10+' },
-  { label: 'Years Experience', val: '4+' },
-  { label: 'AI Annotation Work', val: 'Active' },
-  { label: 'Availability', val: 'Open to Work' },
-];
-
-function buildTicker() {
-  const row = document.getElementById('tickerRow');
-  // duplicate for seamless loop
-  const items = [...tickerData, ...tickerData];
-  row.innerHTML = items.map(d =>
-    `<span class="ticker-item">
-      <span class="val">${d.val}</span>
-      <span class="dot">|</span>
-      ${d.label}
-      <span style="padding-right:1.5rem"></span>
-    </span>`
-  ).join('');
-}
-buildTicker();
-
-// ── Scroll reveal ────────────────────────────────────────────
-const revealEls = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 60);
-      revealObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-revealEls.forEach(el => revealObserver.observe(el));
-
-// ── Copy to clipboard ────────────────────────────────────────
-function copyEmail(btn) {
-  navigator.clipboard.writeText('umejionummesoma@gmail.com').then(() => {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-  });
-}
-function copyPhone(btn) {
-  navigator.clipboard.writeText('+2349165621724').then(() => {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-  });
-}
-
-// ── Contact form → mailto ────────────────────────────────────
-function sendEmail() {
-  const name  = document.getElementById('fc-name').value.trim();
-  const email = document.getElementById('fc-email').value.trim();
-  const msg   = document.getElementById('fc-msg').value.trim();
-  if (!name || !email || !msg) { alert('Please fill in all fields.'); return; }
-  const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
-  const body    = encodeURIComponent(`Hi Mmesoma,\n\n${msg}\n\nBest regards,\n${name}\n${email}`);
-  window.location.href = `mailto:umejionummesoma@gmail.com?subject=${subject}&body=${body}`;
-  document.getElementById('fc-status').style.display = 'block';
-}
-
-// ── Portfolio card links ─────────────────────────────────────
-document.querySelectorAll('.portfolio-card').forEach(card => {
-  card.addEventListener('click', () => {
-    window.open('https://1drv.ms/w/c/1bb00868e9c51a3b/IQDRFSmIdHjmRJdCF-ITOurVAQToLpGJwu0KgQ6DTqPVQwU?e=1cdU82', '_blank');
-  });
-});
-
-// ── Video gallery: filter ───────────────────────────────────
-function filterVids(cat, btn) {
-  document.querySelectorAll('.vf-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.vid-card').forEach(card => {
-    card.classList.toggle('hidden', cat !== 'all');
-  });
-}
-
-// ── Video gallery: editable titles ─────────────────────────
-const savedTitles = JSON.parse(localStorage.getItem('mmesoma_vid_titles') || '{}');
-Object.keys(savedTitles).forEach(i => {
-  const el = document.getElementById('vt-' + i);
-  if (el) el.textContent = savedTitles[i];
-});
-function editTitle(i) {
-  const wrap = document.getElementById('ve-' + i);
-  const inp  = document.getElementById('vi-' + i);
-  const cur  = document.getElementById('vt-' + i).textContent;
-  inp.value = cur;
-  wrap.style.display = 'flex';
-}
-function saveTitle(i) {
-  const inp = document.getElementById('vi-' + i);
-  const val = inp.value.trim();
-  if (!val) return;
-  document.getElementById('vt-' + i).textContent = val;
-  document.getElementById('ve-' + i).style.display = 'none';
-  const store = JSON.parse(localStorage.getItem('mmesoma_vid_titles') || '{}');
-  store[i] = val;
-  localStorage.setItem('mmesoma_vid_titles', JSON.stringify(store));
-}
-
-</script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
