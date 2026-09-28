@@ -1,423 +1,234 @@
-/* Portfolio of Mmesoma Juliet Umejionu
-   1. Content settings
-   2. Navigation, scroll progress and section highlighting
-   3. Reveal on scroll
-   4. Hero image fallback
-   5. Video gallery
-   6. Contact actions
-*/
-
+/* Portfolio interactions: navigation, video gallery, reveal effects and contact actions. */
 'use strict';
-
-/* ------------------------------------------------------------------ */
-/* 1. Content settings                                                 */
-/* ------------------------------------------------------------------ */
 
 const CONTACT_EMAIL = 'umejionummesoma@gmail.com';
 const INITIAL_VIDEOS = 6;
-
-/* Project videos.
-   Replace each placeholder title when the final titles are ready.
-   Add an optional category (for example 'analytics' or 'automation') to a
-   video and filter buttons appear automatically once two or more different
-   categories exist. */
 const VIDEOS = [
-  { id: '6cr7xY70Gbw', title: 'Data Project 01' },
-  { id: 'FGUepxM2JPc', title: 'Data Project 02' },
-  { id: 'BPMeYmodfII', title: 'Data Project 03' },
-  { id: 'Ae2dbQKA-n0', title: 'Data Project 04' },
-  { id: 'Mnw5T2CoOK8', title: 'Data Project 05' },
-  { id: '0i11C_XlCMc', title: 'Data Project 06' },
-  { id: 'aZPALVSfRQc', title: 'Data Project 07' },
-  { id: '4d7VwF-kYRM', title: 'Data Project 08' },
-  { id: 'oYPmA08tTwI', title: 'Data Project 09' },
-  { id: '6BRyiOO3ajM', title: 'Data Project 10' },
-  { id: '_QHAimIUeEw', title: 'Data Project 11' },
-  { id: 'yXS4RyGsw_E', title: 'Data Project 12' },
-  { id: 'TXB3xIbZ6Rk', title: 'Data Project 13' },
-  { id: 'CEQBIbH-llE', title: 'Data Project 14' },
+  { id: '6cr7xY70Gbw', title: 'Project Walkthrough 01' },
+  { id: 'FGUepxM2JPc', title: 'Project Walkthrough 02' },
+  { id: 'BPMeYmodfII', title: 'Project Walkthrough 03' },
+  { id: 'Ae2dbQKA-n0', title: 'Project Walkthrough 04' },
+  { id: 'Mnw5T2CoOK8', title: 'Project Walkthrough 05' },
+  { id: '0i11C_XlCMc', title: 'Project Walkthrough 06' },
+  { id: 'aZPALVSfRQc', title: 'Project Walkthrough 07' },
+  { id: '4d7VwF-kYRM', title: 'Project Walkthrough 08' },
+  { id: 'oYPmA08tTwI', title: 'Project Walkthrough 09' },
+  { id: '6BRyiOO3ajM', title: 'Project Walkthrough 10' },
+  { id: '_QHAimIUeEw', title: 'Project Walkthrough 11' },
+  { id: 'yXS4RyGsw_E', title: 'Project Walkthrough 12' },
+  { id: 'TXB3xIbZ6Rk', title: 'Project Walkthrough 13' },
+  { id: 'CEQBIbH-llE', title: 'Project Walkthrough 14' }
 ];
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 
-const escapeHtml = (value) =>
-  String(value).replace(/[&<>"']/g, (char) => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;',
-  }[char]));
-
-/* ------------------------------------------------------------------ */
-/* 2. Navigation, scroll progress and section highlighting             */
-/* ------------------------------------------------------------------ */
-
-const header = $('.site-header');
+/* Mobile navigation */
 const navToggle = $('.nav-toggle');
 const navMenu = $('#nav-menu');
-const navBackdrop = $('.nav-backdrop');
-const progressBar = $('.scroll-progress span');
-const toTop = $('.to-top');
-const MOBILE_BREAKPOINT = 860;
 
 function setMenu(open) {
   if (!navToggle || !navMenu) return;
   navMenu.classList.toggle('open', open);
-  if (navBackdrop) navBackdrop.classList.toggle('show', open);
-  document.body.classList.toggle('menu-open', open);
   navToggle.setAttribute('aria-expanded', String(open));
   navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 }
 
 if (navToggle && navMenu) {
-  navToggle.addEventListener('click', () => {
-    setMenu(!navMenu.classList.contains('open'));
-  });
-
-  $$('a', navMenu).forEach((link) => {
-    link.addEventListener('click', () => setMenu(false));
-  });
-
-  if (navBackdrop) navBackdrop.addEventListener('click', () => setMenu(false));
-
+  navToggle.addEventListener('click', () => setMenu(!navMenu.classList.contains('open')));
+  $$('a', navMenu).forEach((link) => link.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && navMenu.classList.contains('open')) {
-      setMenu(false);
-      navToggle.focus();
-    }
+    if (event.key === 'Escape') setMenu(false);
   });
-
   window.addEventListener('resize', () => {
-    if (window.innerWidth > MOBILE_BREAKPOINT) setMenu(false);
+    if (window.innerWidth > 760) setMenu(false);
   });
 }
 
-/* Scroll progress, header shadow and back to top button */
+/* Scroll progress and active section link */
+const progressBar = $('.scroll-progress span');
 let scrollQueued = false;
 
 function onScroll() {
-  const y = window.scrollY;
   const max = document.documentElement.scrollHeight - window.innerHeight;
-
-  if (progressBar) {
-    progressBar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
-  }
-  if (header) header.classList.toggle('scrolled', y > 8);
-  if (toTop) toTop.classList.toggle('show', y > 700);
-
-  /* The last section is short on some screens, so highlight it at the page end */
-  if (max > 0 && y >= max - 4) setActiveLink('contact');
-
+  if (progressBar) progressBar.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
   scrollQueued = false;
 }
-
-window.addEventListener(
-  'scroll',
-  () => {
-    if (!scrollQueued) {
-      scrollQueued = true;
-      window.requestAnimationFrame(onScroll);
-    }
-  },
-  { passive: true }
-);
-
-if (toTop) {
-  toTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-/* Highlight the nav link for the section currently in view */
-const navLinks = new Map(
-  $$('.nav-link').map((link) => [link.getAttribute('href').slice(1), link])
-);
-
-function setActiveLink(id) {
-  navLinks.forEach((link, key) => {
-    const active = key === id;
-    link.classList.toggle('active', active);
-    if (active) {
-      link.setAttribute('aria-current', 'true');
-    } else {
-      link.removeAttribute('aria-current');
-    }
-  });
-}
-
-if ('IntersectionObserver' in window) {
-  const spy = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActiveLink(entry.target.id);
-      });
-    },
-    { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-  );
-
-  ['hero', 'about', 'experience', 'work', 'videos', 'contact'].forEach((id) => {
-    const section = document.getElementById(id);
-    if (section) spy.observe(section);
-  });
-}
-
+window.addEventListener('scroll', () => {
+  if (!scrollQueued) {
+    scrollQueued = true;
+    window.requestAnimationFrame(onScroll);
+  }
+}, { passive: true });
 onScroll();
 
-/* ------------------------------------------------------------------ */
-/* 3. Reveal on scroll                                                 */
-/* ------------------------------------------------------------------ */
-
-const revealElements = $$('.reveal');
-
+const navLinks = new Map($$('.nav-link').map((link) => [link.getAttribute('href').slice(1), link]));
 if ('IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach((link, id) => {
+        const active = id === entry.target.id;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
       });
-    },
-    { threshold: 0.12 }
-  );
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+  ['hero', 'about', 'skills', 'experience', 'work', 'videos', 'education', 'contact'].forEach((id) => {
+    const section = document.getElementById(id);
+    if (section) sectionObserver.observe(section);
+  });
+}
 
+/* Reveal sections on scroll, with a graceful fallback */
+const revealElements = $$('.reveal');
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
   revealElements.forEach((element) => revealObserver.observe(element));
 } else {
   revealElements.forEach((element) => element.classList.add('visible'));
 }
 
-/* ------------------------------------------------------------------ */
-/* 4. Hero image fallback                                              */
-/* ------------------------------------------------------------------ */
-
-const heroImage = $('#heroImage');
-const portraitFrame = $('#portraitFrame');
-
-if (heroImage && portraitFrame) {
-  let triedFallback = false;
-
-  const handleImageFailure = () => {
-    const fallback = heroImage.dataset.fallback;
-    if (!triedFallback && fallback) {
-      triedFallback = true;
-      heroImage.src = fallback;
-    } else {
-      portraitFrame.classList.add('img-failed');
-    }
-  };
-
-  heroImage.addEventListener('error', handleImageFailure);
-
-  /* The error may already have fired before this script ran */
-  if (heroImage.complete && heroImage.naturalWidth === 0) handleImageFailure();
-}
-
-/* ------------------------------------------------------------------ */
-/* 5. Video gallery                                                    */
-/* ------------------------------------------------------------------ */
-
+/* Video gallery: defer YouTube embeds until a user chooses to play */
 const videoGrid = $('#videoGrid');
 const videoFilters = $('#videoFilters');
 const videoMore = $('#videoMore');
 const videoCount = $('#videoCount');
 
 if (videoGrid) {
-  const state = { filter: 'all', expanded: false };
-  const capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
-
-  const cards = VIDEOS.map((video) => {
+  const state = { expanded: false };
+  const cards = VIDEOS.map((video, index) => {
     const card = document.createElement('article');
     card.className = 'video-card';
-    if (video.category) card.dataset.category = video.category;
+    const embed = document.createElement('div');
+    embed.className = 'video-embed';
+    const play = document.createElement('button');
+    play.type = 'button';
+    play.className = 'video-play';
+    play.setAttribute('aria-label', 'Play ' + video.title);
+    play.dataset.videoId = video.id;
+    const thumb = document.createElement('img');
+    thumb.src = 'https://i.ytimg.com/vi/' + video.id + '/hqdefault.jpg';
+    thumb.alt = '';
+    thumb.loading = 'lazy';
+    thumb.decoding = 'async';
+    thumb.addEventListener('error', () => { thumb.hidden = true; });
+    const playIcon = document.createElement('span');
+    playIcon.className = 'play-icon';
+    playIcon.setAttribute('aria-hidden', 'true');
+    play.append(thumb, playIcon);
+    embed.append(play);
 
-    const title = escapeHtml(video.title);
-    const kind = video.category ? capitalise(video.category) : 'Project walkthrough';
-
-    card.innerHTML =
-      '<div class="video-embed">' +
-      '<button type="button" class="video-play" data-id="' + video.id + '" data-title="' + title + '" aria-label="Play video: ' + title + '">' +
-      '<img src="https://i.ytimg.com/vi/' + video.id + '/hqdefault.jpg" alt="" loading="lazy" decoding="async" />' +
-      '<span class="play-icon" aria-hidden="true"></span>' +
-      '</button>' +
-      '</div>' +
-      '<div class="video-info">' +
-      '<h3>' + title + '</h3>' +
-      '<p>' + escapeHtml(kind) + '</p>' +
-      '<a class="video-link" href="https://youtu.be/' + video.id + '" target="_blank" rel="noopener">Watch on YouTube</a>' +
-      '</div>';
-
-    const thumb = card.querySelector('img');
-    thumb.addEventListener('error', () => thumb.remove());
-
-    videoGrid.appendChild(card);
+    const info = document.createElement('div');
+    info.className = 'video-info';
+    const title = document.createElement('h3');
+    title.textContent = video.title;
+    const label = document.createElement('p');
+    label.textContent = 'Portfolio video ' + String(index + 1).padStart(2, '0');
+    const link = document.createElement('a');
+    link.className = 'video-link';
+    link.href = 'https://youtu.be/' + video.id;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = 'Watch on YouTube';
+    info.append(title, label, link);
+    card.append(embed, info);
+    videoGrid.append(card);
     return card;
   });
 
-  /* Load the player only when a video is chosen, one at a time */
-  let activeEmbed = null;
-
-  videoGrid.addEventListener('click', (event) => {
-    const button = event.target.closest('.video-play');
-    if (!button) return;
-
-    if (activeEmbed) {
-      activeEmbed.container.replaceChildren(activeEmbed.button);
-      activeEmbed = null;
-    }
-
-    const container = button.parentElement;
-    const frame = document.createElement('iframe');
-    frame.src =
-      'https://www.youtube-nocookie.com/embed/' + button.dataset.id + '?autoplay=1&rel=0&playsinline=1';
-    frame.title = button.dataset.title;
-    frame.allow =
-      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    frame.allowFullscreen = true;
-
-    container.replaceChildren(frame);
-    activeEmbed = { container, button };
-  });
-
-  /* Filters appear only when videos carry two or more categories */
-  const categories = Array.from(new Set(VIDEOS.map((v) => v.category).filter(Boolean)));
-
-  if (videoFilters && categories.length > 1) {
-    videoFilters.hidden = false;
-    videoFilters.innerHTML = ['all'].concat(categories)
-      .map(
-        (name) =>
-          '<button type="button" class="filter-btn' + (name === 'all' ? ' active' : '') +
-          '" data-filter="' + escapeHtml(name) + '">' +
-          (name === 'all' ? 'All' : escapeHtml(capitalise(name))) + '</button>'
-      )
-      .join('');
-
-    videoFilters.addEventListener('click', (event) => {
-      const button = event.target.closest('.filter-btn');
-      if (!button) return;
-      state.filter = button.dataset.filter;
-      state.expanded = false;
-      $$('.filter-btn', videoFilters).forEach((btn) => btn.classList.toggle('active', btn === button));
-      applyVideoView();
-    });
-  }
-
-  function applyVideoView() {
-    const matching = cards.filter(
-      (card) => state.filter === 'all' || card.dataset.category === state.filter
-    );
-
-    cards.forEach((card) => {
-      card.hidden = true;
-    });
-
+  function updateVideoView() {
     let shown = 0;
-    matching.forEach((card, index) => {
+    cards.forEach((card, index) => {
       const visible = state.expanded || index < INITIAL_VIDEOS;
       card.hidden = !visible;
       if (visible) shown += 1;
     });
-
+    if (videoCount) videoCount.textContent = 'Showing ' + shown + ' of ' + cards.length + ' videos';
     if (videoMore) {
-      const needsToggle = matching.length > INITIAL_VIDEOS;
-      videoMore.hidden = !needsToggle;
+      videoMore.hidden = cards.length <= INITIAL_VIDEOS;
+      videoMore.textContent = state.expanded ? 'Show fewer videos' : 'Show all ' + cards.length + ' videos';
       videoMore.setAttribute('aria-expanded', String(state.expanded));
-      videoMore.textContent = state.expanded
-        ? 'Show fewer videos'
-        : 'Show all ' + matching.length + ' videos';
-    }
-
-    if (videoCount) {
-      videoCount.textContent = 'Showing ' + shown + ' of ' + matching.length + ' videos';
     }
   }
+
+  videoGrid.addEventListener('click', (event) => {
+    const button = event.target.closest('.video-play');
+    if (!button) return;
+    const wrapper = button.closest('.video-embed');
+    const frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + button.dataset.videoId + '?autoplay=1&rel=0&playsinline=1';
+    frame.title = 'Portfolio video player';
+    frame.loading = 'lazy';
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    wrapper.replaceChildren(frame);
+  });
 
   if (videoMore) {
     videoMore.addEventListener('click', () => {
       state.expanded = !state.expanded;
-      applyVideoView();
+      updateVideoView();
       if (!state.expanded) {
-        const section = document.getElementById('videos');
+        const section = $('#videos');
         if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   }
-
-  applyVideoView();
+  updateVideoView();
 }
 
-/* ------------------------------------------------------------------ */
-/* 6. Contact actions                                                  */
-/* ------------------------------------------------------------------ */
-
-const yearEl = $('#year');
-if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
+/* Copy email address */
 const copyButton = $('#copyEmail');
-
 if (copyButton) {
-  const originalLabel = copyButton.textContent;
-
-  const flash = (message) => {
-    copyButton.textContent = message;
-    window.setTimeout(() => {
-      copyButton.textContent = originalLabel;
-    }, 2000);
-  };
-
-  copyButton.addEventListener('click', () => {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(CONTACT_EMAIL).then(
-        () => flash('Copied'),
-        () => flash('Copy failed')
-      );
-      return;
-    }
-
-    const field = document.createElement('textarea');
-    field.value = CONTACT_EMAIL;
-    field.setAttribute('readonly', '');
-    field.style.position = 'fixed';
-    field.style.opacity = '0';
-    document.body.appendChild(field);
-    field.select();
-    let copied = false;
+  copyButton.addEventListener('click', async () => {
+    const original = copyButton.textContent;
     try {
-      copied = document.execCommand('copy');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(CONTACT_EMAIL);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = CONTACT_EMAIL;
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.append(input);
+        input.select();
+        const success = document.execCommand('copy');
+        input.remove();
+        if (!success) throw new Error('Clipboard copy failed');
+      }
+      copyButton.textContent = 'Copied';
     } catch (error) {
-      copied = false;
+      copyButton.textContent = 'Copy unavailable';
     }
-    document.body.removeChild(field);
-    flash(copied ? 'Copied' : 'Copy failed');
+    window.setTimeout(() => { copyButton.textContent = original; }, 1800);
   });
 }
 
+/* Contact form opens the visitor's email client */
 const contactForm = $('.contact-form');
 const formStatus = $('#formStatus');
-
 if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
-
     const name = $('#name').value.trim();
     const email = $('#email').value.trim();
     const message = $('#message').value.trim();
-
+    if (!name || !email || !message) return;
     const subject = 'Portfolio enquiry from ' + name;
     const body = message + '\n\nFrom: ' + name + '\nReply to: ' + email;
-
-    window.location.href =
-      'mailto:' + CONTACT_EMAIL +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
-
-    if (formStatus) {
-      formStatus.textContent =
-        'Your email app should open with the message ready to send. If it does not, write to ' +
-        CONTACT_EMAIL + ' directly.';
-    }
+    if (formStatus) formStatus.textContent = 'Opening your email app. If it does not open, email ' + CONTACT_EMAIL + ' directly.';
+    window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 }
+
+const year = $('#year');
+if (year) year.textContent = String(new Date().getFullYear());
