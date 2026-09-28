@@ -1,3 +1,4 @@
+// Mobile Menu Toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -15,6 +16,7 @@ if (navToggle && navMenu) {
   });
 }
 
+// Reveal on Scroll
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver(
@@ -31,6 +33,7 @@ const revealObserver = new IntersectionObserver(
 
 revealElements.forEach((element) => revealObserver.observe(element));
 
+// Video Filter
 const filterButtons = document.querySelectorAll('.filter-btn');
 const videoCards = document.querySelectorAll('.video-card');
 
@@ -38,7 +41,7 @@ filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
 
-    filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+    filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
 
     videoCards.forEach((card) => {
       const matches = filter === 'all' || card.dataset.category === filter;
@@ -47,18 +50,23 @@ filterButtons.forEach((button) => {
   });
 });
 
+// Contact Form
 const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const name = document.getElementById('name')?.value?.trim();
+    const name = document.getElementById('name')?.value?.trim() || 'there';
     const button = contactForm.querySelector('button[type="submit"]');
 
     if (button) {
-      button.textContent = name ? `Thanks, ${name}!` : 'Message sent';
+      button.textContent = `Thanks ${name}!`;
       button.disabled = true;
-      button.style.opacity = '0.8';
+      setTimeout(() => {
+        contactForm.reset();
+        button.textContent = 'Send Message';
+        button.disabled = false;
+      }, 3000);
     }
   });
 }
